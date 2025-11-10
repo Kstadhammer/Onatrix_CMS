@@ -1,9 +1,12 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "onatrix_cms",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/styles.css",
+    "watch": "npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/styles.css --watch",
     "build:css": "npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/styles.css",
     "watch:css": "npx tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/styles.css --watch"
   },

@@ -1,0 +1,312 @@
+/* ===================================
+   Email Subscription Form Section
+   =================================== */
+
+.email-subscription-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.email-subscription-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  max-height: 220px;
+  align-items: center;
+}
+
+/* Form Card */
+.email-subscription-card {
+  background-color: #4f5955;
+  padding: 2.5rem;
+  border-radius: 4px;
+  width: 306.158px;
+}
+
+.email-subscription-heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: #f2eddc;
+  margin: 0 0 0.75rem 0;
+}
+
+.email-subscription-description {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Email Form Input */
+.email-subscription-form {
+  width: 100%;
+}
+
+.email-subscription-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-group {
+  position: relative;
+}
+
+.email-subscription-input {
+  width: 100%;
+  padding: 0.875rem 3rem 0.875rem 1rem;
+  font-size: 14px;
+  color: #535656;
+  border: none;
+  border-radius: 3px;
+  background-color: #ffffff;
+  outline: none;
+  font-style: italic;
+}
+
+.email-subscription-input::placeholder {
+  color: #9c9ea6;
+  font-style: italic;
+}
+
+.email-subscription-input:focus {
+  outline: 2px solid #f2eddc;
+  outline-offset: 2px;
+}
+
+/* Submit Button (Envelope Icon) */
+.email-subscription-submit-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 23.39px; /* Adjust this value to vertically center the icon */
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.email-subscription-submit-btn:hover {
+  opacity: 0.7;
+}
+
+.email-subscription-icon {
+  width: 20px;
+  height: 20px;
+  color: #535656;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .email-subscription-section {
+    padding: 3rem 0;
+  }
+
+  .email-subscription-heading {
+    font-size: 1.25rem;
+  }
+
+  .email-subscription-card {
+    padding: 2rem;
+    max-width: 100%;
+  }
+}
+/* ===================================
+   Content Blocks Section (Wrapper)
+   =================================== */
+
+.content-blocks-section {
+  width: 100%;
+  display: block;
+  clear: both;
+  position: relative;
+}
+
+/* ===================================
+   Question Form Section
+   =================================== */
+
+.question-form-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-form-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.question-form-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #4f5955;
+}
+
+.question-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.question-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.question-form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: #4f5955;
+}
+
+.question-form-input,
+.question-form-textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  font-size: 13px;
+  font-style: italic;
+  color: #9c9ea6;
+  transition: border-color 0.15s ease-in-out;
+  background-color: #ffffff;
+}
+
+.question-form-input::placeholder,
+.question-form-textarea::placeholder {
+  color: #9c9ea6;
+  font-style: italic;
+}
+
+.question-form-input:focus,
+.question-form-textarea:focus {
+  outline: none;
+  border-color: #4f5955;
+}
+
+.question-form-textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.question-form-submit {
+  padding: 0.875rem 2.5rem;
+  background-color: #4f5955;
+  color: #f2eddc;
+  font-weight: 500;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+}
+
+.question-form-submit:hover {
+  background-color: #3d4541;
+}
+
+.question-form-submit:active {
+  background-color: #2f3632;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .question-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .question-form-section {
+    padding: 2rem 0;
+  }
+
+  .question-form-container {
+    padding: 0 1rem;
+  }
+
+  .question-form-title {
+    font-size: 1.5rem;
+  }
+}
+.question-form-success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.question-form-error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.field-validation-error {
+  color: #dc3545;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+/* ===================================
+    Pagination Section
+   =================================== */
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+.pagination-link {
+  padding: 0.5rem 1rem;
+  color: #4f5955;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pagination-link:hover:not(.pagination-disabled):not(.pagination-active) {
+  background-color: #f2eddc;
+}
+
+.pagination-active {
+  background-color: #d9c3a9;
+  color: #4f5955;
+  font-weight: 600;
+}
+
+.pagination-disabled {
+  color: #9c9ea6;
+  cursor: not-allowed;
+  pointer-events: none;
+}

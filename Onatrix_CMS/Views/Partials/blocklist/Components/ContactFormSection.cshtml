@@ -1,0 +1,66 @@
+﻿@using Onatrix_CMS.ViewModels
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (ContactFormSection)Model.Content;
+    var formTitle = content.FormTitle ?? "Let us know about your next project";
+    var formSubtitle = content.FormSubtitle ?? "REQUEST A CALLBACK";
+    var formDescription = content.FormDescription ?? "";
+    var googleMapsEmbed = content.GoogleMapsEmbed ?? "";
+}
+
+<section class="contact-form-section">
+    <!-- Google Maps Background -->
+    @if (!string.IsNullOrEmpty(googleMapsEmbed))
+    {
+        <div class="contact-map-background">
+            @Html.Raw(googleMapsEmbed)
+        </div>
+        <!-- Overlay -->
+        <div class="contact-map-overlay"></div>
+    }
+    
+    <div class="contact-form-container">
+        <!-- Form card -->
+        <div class="contact-form-card">
+            
+            <!-- Header -->
+            <div class="contact-form-header">
+                <p class="contact-form-subtitle">
+                    @formSubtitle
+                </p>
+                <h2 class="contact-form-title">
+                    @formTitle
+                </h2>
+                @if (!string.IsNullOrEmpty(formDescription))
+                {
+                    <p class="contact-form-description">
+                        @formDescription
+                    </p>
+                }
+            </div>
+            
+            <!-- Form -->
+            <partial name="Forms/_ContactForm" model="new CallbackFormViewModel()"/>
+
+            <div class="mt-8">
+                @if (TempData["FormSuccess"] != null)
+                {
+                    <!-- Display Success -->
+                    <div class="bg-green-50 text-green-700 p-4 mx-8 rounded-md">
+                        @TempData["FormSuccess"]
+                    </div>
+                }
+                else if (TempData["FormError"] != null)
+                {
+                    <!-- Display Error -->
+                    <div class="bg-red-50 text-red-700 p-4 mx-8 rounded-md">
+                        @TempData["FormError"]
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>

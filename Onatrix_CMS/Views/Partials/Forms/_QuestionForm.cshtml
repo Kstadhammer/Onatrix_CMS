@@ -1,0 +1,41 @@
+@using Onatrix_CMS.ViewModels
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var rootContent = Umbraco.ContentAtRoot();
+    var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+    
+    // Only show on ServiceDetail pages
+    var currentPageType = Model.ContentType.Alias;
+    var shouldShowForm = currentPageType == "serviceDetail";
+    
+    // Get form settings from site settings or use defaults
+    var formTitle = siteSettings?.QuestionFormTitle ?? "Have a question about this service?";
+    var showForm = siteSettings?.ShowQuestionForm ?? true;
+}
+
+@if (shouldShowForm && showForm)
+{
+    <section class="question-form-section">
+        <div class="question-form-container">
+            <h3 class="question-form-title">@formTitle</h3>
+            
+            @if (TempData["FormSuccessQuestion"] != null)
+            {
+                <div class="question-form-success">
+                    @TempData["FormSuccessQuestion"]
+                </div>
+            }
+            
+            @if (TempData["FormErrorQuestion"] != null)
+            {
+                <div class="question-form-error">
+                    @TempData["FormErrorQuestion"]
+                </div>
+            }
+            <partial name="Forms/_ServiceForm" model="new CallBackFormQuestionServiceViewModel()"/>
+
+        </div>
+    </section>
+}

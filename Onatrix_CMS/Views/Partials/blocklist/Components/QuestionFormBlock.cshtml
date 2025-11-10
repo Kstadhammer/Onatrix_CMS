@@ -1,0 +1,37 @@
+@*@using Onatrix_CMS.ViewModels
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (QuestionFormBlock)Model.Content;
+    var formTitle = content.FormTitle ?? "Have a question ?";
+    var showForm = content.ShowForm;
+}
+
+@if (showForm)
+{
+    <section class="question-form-section">
+        <div class="question-form-container">
+            <h3 class="question-form-title">@formTitle</h3>
+
+            <!-- Form -->
+            <partial name="Forms/_ServiceForm" model="new CallBackFormQuestionServiceViewModel()" view-data='new ViewDataDictionary(ViewData) { { "prefix", "QuestionForm" } }'/>
+
+            <div class="mt-8">
+                @if (TempData["FormSuccess_Question"] != null)
+                {
+                    <!-- Display Success -->
+                    <div class="bg-green-50 text-green-700 p-4 mx-8 rounded-md">
+                        @TempData["FormSuccess_Question"]
+                    </div>
+                }
+                else if (TempData["FormError_Question"] != null)
+                {
+                    <!-- Display Error -->
+                    <div class="bg-red-50 text-red-700 p-4 mx-8 rounded-md">
+                        @TempData["FormError_Question"]
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}*@

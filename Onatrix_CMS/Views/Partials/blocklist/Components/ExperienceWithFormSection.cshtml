@@ -1,0 +1,111 @@
+@using Onatrix_CMS.ViewModels
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+<!-- Request a call back -- FORM -->
+
+@{
+    var content = (ExperienceWithFormSection)Model.Content;
+    var sectionLabel = content.SectionLabel ?? "";
+    var heading = content.Heading ?? "";
+    var quoteText = content.QuoteText ?? "";
+    var description = content.Description ?? "";
+    var signatureImage = content.SignatureImage?.Url() ?? "";
+    var signatureName = content.SignatureName ?? "";
+    var signatureTitle = content.SignatureTitle ?? "";
+    var buttonText = content.ButtonText ?? "";
+    var buttonUrl = content.ButtonUrl ?? "";
+    var formHeading = content.FormHeading ?? "";
+    var formDescription = content.FormDescription ?? "";
+    var backgroundImage = content.BackgroundImage?.Url() ?? "";
+}
+
+<section class="experience-form-section">
+    @if (!string.IsNullOrEmpty(backgroundImage))
+    {
+        <div class="experience-form-background" style="background-image: url('@backgroundImage');"></div>
+    }
+
+    <div class="experience-form-container">
+        <div class="experience-form-grid">
+            <!-- Left Column - Experience Content -->
+            <div class="experience-content">
+                @if (!string.IsNullOrEmpty(sectionLabel))
+                {
+                    <p class="experience-label">@sectionLabel</p>
+                }
+
+                @if (!string.IsNullOrEmpty(heading))
+                {
+                    <h2 class="experience-heading">@heading</h2>
+                }
+
+                @if (!string.IsNullOrEmpty(quoteText))
+                {
+                    <p class="experience-quote">@quoteText</p>
+                }
+
+                @if (!string.IsNullOrEmpty(description))
+                {
+                    <p class="experience-description">@description</p>
+                }
+
+                @if (!string.IsNullOrEmpty(signatureImage) || !string.IsNullOrEmpty(signatureName))
+                {
+                    <div class="experience-signature">
+                        @if (!string.IsNullOrEmpty(signatureImage))
+                        {
+                            <img src="@signatureImage" alt="@signatureName signature"/>
+                        }
+                        @if (!string.IsNullOrEmpty(signatureName))
+                        {
+                            <p class="experience-signature-name">@signatureName</p>
+                        }
+                        @if (!string.IsNullOrEmpty(signatureTitle))
+                        {
+                            <p class="experience-signature-title">@signatureTitle</p>
+                        }
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(buttonText) && !string.IsNullOrEmpty(buttonUrl))
+                {
+                    <a href="@buttonUrl" class="experience-button">@buttonText</a>
+                }
+            </div>
+
+            <!-- Right Column - Callback Form -->
+            <div class="callback-form-wrapper">
+                @if (!string.IsNullOrEmpty(formHeading))
+                {
+                    <h3 class="callback-form-heading">@formHeading</h3>
+                }
+
+                @if (!string.IsNullOrEmpty(formDescription))
+                {
+                    <p class="callback-form-description">@formDescription</p>
+                }
+                
+                <!-- Form -->
+                <partial name="Forms/_CallBackForm" model="new CallbackFormViewModel()"/>
+
+                <div class="mt-8">
+                @if (TempData["FormSuccess"] != null)
+                {
+                    <!-- Display Success -->
+                    <div class="bg-green-50 text-green-700 p-4 mx-8 rounded-md">
+                        @TempData["FormSuccess"]
+                    </div>
+                }
+                else if (TempData["FormError"] != null)
+                {
+                    <!-- Display Error -->
+                    <div class="bg-red-50 text-red-700 p-4 mx-8 rounded-md">
+                        @TempData["FormError"]
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
